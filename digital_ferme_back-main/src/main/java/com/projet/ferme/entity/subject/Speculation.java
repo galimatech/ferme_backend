@@ -43,6 +43,9 @@ public class Speculation extends TimeModel{
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="speculation") 
 	 private Set<HarvestSpeculation> harvest;
+	
+	@Column(name="description")
+	private String description;
 
 	public String getName() {
 		return name;
