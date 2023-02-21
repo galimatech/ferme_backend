@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="digital_ferme_back-main/.mvn/wrapper"/>
+	<classpathentry excluding="com/projet/ferme/exception/" kind="src" path="digital_ferme_back-main/src/main/java"/>
+	<classpathentry kind="src" path="digital_ferme_back-main/src/main/java/com/projet/ferme/exception"/>
+	<classpathentry kind="src" path="digital_ferme_back-main/src/test/java"/>
+	<classpathentry kind="output" path="digital_ferme_back-main/target/classes"/>
+</classpath>
