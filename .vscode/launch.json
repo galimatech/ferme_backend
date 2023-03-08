@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DigitalFermeApplication<digitalFerme>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.projet.ferme.DigitalFermeApplication",
+            "projectName": "digitalFerme",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

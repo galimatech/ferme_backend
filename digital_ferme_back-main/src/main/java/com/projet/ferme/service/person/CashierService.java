@@ -171,7 +171,7 @@ public class CashierService {
 		Shop shop = shopRepository.findById(shopId).get();
 		List<Cashier> cashier = cashiers.stream().filter( c -> c.getShop().getId().equals(shopId)).collect(Collectors.toList());
 		List<User> users = cashier.stream().map( c -> c.getUser()).collect(Collectors.toList());
-		List<User> allUsers = userRepository.findAll().stream().filter(user-> user.getRole().getRoleName().equals("cashier")).collect(Collectors.toList());;
+		List<User> allUsers = userRepository.findAll().stream().filter(user-> user.getRole().getRoleName().equals("cashier") || user.getRole().getRoleName().equals("admin")).collect(Collectors.toList());
 		List<User> notUsers = allUsers.stream().filter(user-> !users.contains(user)).collect(Collectors.toList());
 		map.put("success", true);
 		map.put("shop", shop);
