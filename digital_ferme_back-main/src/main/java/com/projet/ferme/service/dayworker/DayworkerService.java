@@ -21,6 +21,8 @@ public class DayworkerService {
     public Map<String, Object> addDayWorker(DayWorker dayWorker) {
 
         Map<String, Object> map = new HashMap<String, Object>();
+        dayWorker.setUpdatedOn(new Date());
+        dayWorker.setCreatedOn(new Date());
         DayWorker savedDayWorker = dayWorkerRepository.save(dayWorker);
         if (savedDayWorker == null) {
             map.put("success", false);
@@ -40,12 +42,13 @@ public class DayworkerService {
             map.put("success", false);
             map.put("message", "L'enregistrement a échoué, cette boutique n'existe pas");
         }else {
-            dayWorker.setAddress(dayWorker.getAddress());
-            dayWorker.setFirstName(dayWorker.getFirstName());
-            dayWorker.setPhone(dayWorker.getPhone());
-            dayWorker.setUsed(dayWorker.isUsed());
-            dayWorker.setLastName(dayWorker.getLastName());
-            DayWorker savedDayWorker = dayWorkerRepository.save(dayWorker);
+            oldworker.setAddress(oldworker.getAddress());
+            oldworker.setFirstName(oldworker.getFirstName());
+            oldworker.setPhone(oldworker.getPhone());
+            oldworker.setUsed(oldworker.isUsed());
+            oldworker.setUpdatedOn(new Date());
+            oldworker.setLastName(oldworker.getLastName());
+            DayWorker savedDayWorker = dayWorkerRepository.save(oldworker);
             if (savedDayWorker == null) {
                 map.put("success", false);
                 map.put("message", "L'enregistrement a échoué");
