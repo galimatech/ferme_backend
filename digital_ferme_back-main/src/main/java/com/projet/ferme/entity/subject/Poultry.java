@@ -51,7 +51,14 @@ public class Poultry extends TimeModel{
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="poultry")
 	private Set<Egg> egg;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="poultry")
+	private Set<Weigh> weigh;
 
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="poultry")
+	private Set<Consumption> consumption;
+	
 	public String getName() {
 		return name;
 	}
