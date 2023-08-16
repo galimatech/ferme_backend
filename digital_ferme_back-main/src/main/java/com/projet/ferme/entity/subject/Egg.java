@@ -1,10 +1,15 @@
 package com.projet.ferme.entity.subject;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.projet.ferme.entity.homesubject.InIncubator;
 import com.projet.ferme.entity.utils.TimeModel;
 
 @Table(name = "tbl_egg")
@@ -14,6 +19,9 @@ public class Egg extends TimeModel{
 	private int quantity;
 	
 	private String destination;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="egg")
+	private Set<InIncubator> inIncubator;
 
 	@ManyToOne
 	@JoinColumn(name = "poultry_id")
@@ -41,5 +49,13 @@ public class Egg extends TimeModel{
 
 	public void setPoultry(Poultry poultry) {
 		this.poultry = poultry;
+	}
+
+	public Set<InIncubator> getInIncubator() {
+		return inIncubator;
+	}
+
+	public void setInIncubator(Set<InIncubator> inIncubator) {
+		this.inIncubator = inIncubator;
 	}
 }
