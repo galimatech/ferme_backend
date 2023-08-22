@@ -6,6 +6,7 @@ import com.projet.ferme.repository.dayworker.DayWorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,8 +22,8 @@ public class DayworkerService {
     public Map<String, Object> addDayWorker(DayWorker dayWorker) {
 
         Map<String, Object> map = new HashMap<String, Object>();
-        dayWorker.setUpdatedOn(new Date());
-        dayWorker.setCreatedOn(new Date());
+        dayWorker.setUpdatedOn(new Date(System.currentTimeMillis()));
+        dayWorker.setCreatedOn(new Date(System.currentTimeMillis()));
         DayWorker savedDayWorker = dayWorkerRepository.save(dayWorker);
         if (savedDayWorker == null) {
             map.put("success", false);
@@ -42,13 +43,14 @@ public class DayworkerService {
             map.put("success", false);
             map.put("message", "L'enregistrement a échoué, cette boutique n'existe pas");
         }else {
-            oldworker.setAddress(oldworker.getAddress());
-            oldworker.setFirstName(oldworker.getFirstName());
-            oldworker.setPhone(oldworker.getPhone());
-            oldworker.setUsed(oldworker.isUsed());
-            oldworker.setUpdatedOn(new Date());
-            oldworker.setLastName(oldworker.getLastName());
-            DayWorker savedDayWorker = dayWorkerRepository.save(oldworker);
+        	
+            oldworker.get().setAddress(dayWorker.getAddress());
+            oldworker.get().setFirstName(dayWorker.getFirstName());
+            oldworker.get().setPhone(dayWorker.getPhone());
+            oldworker.get().setUsed(dayWorker.isUsed());
+            oldworker.get().setUpdatedOn(new Date(System.currentTimeMillis()));
+            oldworker.get().setLastName(dayWorker.getLastName());
+            DayWorker savedDayWorker = dayWorkerRepository.save(oldworker.get());
             if (savedDayWorker == null) {
                 map.put("success", false);
                 map.put("message", "L'enregistrement a échoué");
@@ -73,7 +75,7 @@ public class DayworkerService {
     public Map<String, Object> findDayWorkerById(Long id){
 
         Map<String, Object> map = new HashMap<String, Object>();
-        Optional<DayWorker>dayWorker=dayWorkerRepository.findById(id);
+        Optional<DayWorker> dayWorker =dayWorkerRepository.findById(id);
         map.put("succes",true);
         map.put("dayworker",dayWorker);
 

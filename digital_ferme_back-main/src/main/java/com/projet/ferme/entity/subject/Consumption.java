@@ -2,16 +2,26 @@ package com.projet.ferme.entity.subject;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "tbl_consumption")
 public class Consumption {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private Date date;
 	private int day;
 	private int week;
 	private int quantity;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "poultry_id")
 	private Poultry poultry;
@@ -55,5 +65,5 @@ public class Consumption {
 	public void setPoultry(Poultry poultry) {
 		this.poultry = poultry;
 	}
-	
+
 }
